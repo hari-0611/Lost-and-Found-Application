@@ -1,0 +1,34 @@
+<!-- <ng-container *ngIf="isSidebarVisible">
+<app-landing-page></app-landing-page>
+</ng-container> -->
+
+<mat-sidenav-container class="sidenav-container">
+  
+  <mat-sidenav #sidenav mode="side" closed>
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard">Dashboard</a>
+      <a mat-list-item routerLink="/lost-items">Lost Items</a>
+      <a mat-list-item routerLink="/found-items">Found Items</a>
+      <a mat-list-item (click)="logout()">Logout</a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span [routerLink]="['/']">Lost & Found App</span>
+    </mat-toolbar>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+

@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Global styles */
+.sidenav-container {
+  height: 100vh;
+}
+
+.main-content {
+  padding: 16px;
+}
+
+.menu-button {
+  margin-right: 16px;
+}
+
+
+
