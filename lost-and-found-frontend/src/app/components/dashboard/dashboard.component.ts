@@ -22,11 +22,13 @@ export class DashboardComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.fetchDashboardData();
+    
     const user = this.authService.getUser();
     if (user) {
       this.username = user.username;
+      console.log("Username in dashboard:", this.username);
     }
+    this.fetchDashboardData();
   }
   fetchDashboardData(): void {
     // this.apiService.getLostItems().subscribe(lostItems => {
@@ -35,17 +37,30 @@ export class DashboardComponent implements OnInit{
     //   console.log('Recent Lost Items:', this.recentLost);
     // });
 
-    this.apiService.getLostItems().subscribe({
+    // this.apiService.getLostItems().subscribe({
+    //   next: (data: Item[]) => {
+    //     // 🔁 Update imageUrl to include backend path
+    //     this.recentLost = data.map(item => ({
+    //       ...item,
+    //     }));
+    //     this.lostCount = this.recentLost.length;
+    //   },
+    //   error: (error) => {
+    //     console.error('API Error:', error);
+    //   }
+    // });
+
+    this.apiService.getLostItemsByUsername(this.username).subscribe({
       next: (data: Item[]) => {
-        // 🔁 Update imageUrl to include backend path
-        this.recentLost = data.map(item => ({
+        this.recentLost = data.map((item) => ({
           ...item,
         }));
         this.lostCount = this.recentLost.length;
+        console.log("Hii");
       },
       error: (error) => {
         console.error('API Error:', error);
-      }
+      },
     });
 
     // this.apiService.getFoundItems().subscribe(foundItems => {

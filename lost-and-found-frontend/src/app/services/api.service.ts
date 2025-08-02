@@ -19,6 +19,7 @@ export class ApiService {
 
   // 🔹 GET: Fetch lost items by username
   getLostItemsByUsername(username: string) {
+    console.log("username in service:", username);
     return this.http.get<Item[]>(`${this.apiUrl}/lost-items-all/${username}`);
   }
 
